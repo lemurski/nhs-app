@@ -55,7 +55,7 @@ import {
         </div>
         <div className="rounded-md border">
           <Table className="">
-            <TableHeader className="sticky top-0 border-separate z-50 bg-background shadow-sm shadow-[#858585]">
+            <TableHeader className="sticky top-0 border-separate z-30 bg-background shadow-sm shadow-[#858585]">
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
                   className="border-separate border-0"

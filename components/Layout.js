@@ -47,7 +47,7 @@ const Footer = () => {
 
 const Navbar = () => {
   return (
-    <div className="fixed flex w-full items-center p-5 space-x-8  h-16 bg-white shadow-md top-0 left-0">
+    <div className="fixed flex w-full items-center p-5 space-x-8  h-16 bg-white shadow-md z-50 top-0 left-0">
       <Image alt={"NHS Logo"} src={"/images.png"} width={100} height={10} />
       <Link
         className="text-lg font-semibold text-neutral-900"
@@ -69,7 +69,7 @@ export default function Layout({ children }) {
       {router.pathname.includes("/dashboard") ? (
         <Navbar />
       ) : null}
-      <div className="w-full z-50 py-16 h-screen bg-white">
+      <div className="w-full z-30 py-16 h-screen bg-white">
         {children}
       </div>
       {router.pathname.includes("/dashboard") ||
