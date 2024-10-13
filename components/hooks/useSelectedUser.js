@@ -8,7 +8,7 @@ export default function useSelectedUser(patientId) {
     const { data, error } = await supabase
       .from("Patient")
       .select(
-        "Patient_id, First_Name, Last_Name, NHS_id, Patient_Process (id, Process_id, Start_date, Process (id, Title, Assigned_Event (id, Event_Day_id, Event_Day (id, Event_id, Day, Event (id, Title, Description, Input_type, Category)))))"
+        "Patient_id, First_Name, Last_Name, NHS_id, Patient_Process (id, Process_id, Start_date, Process (id, Title, Assigned_Event (id, Event_Day_id, Event_Day (id, Event_id, Day, Event (id, Title, Description, Input_type, Category, Choice_1, Choice_2, Choice_3, Choice_1_output, Choice_2_output, Choice_3_output, Yes_output, No_output, Task_output)))))"
       )
       .eq("Patient_id", patientId);
 

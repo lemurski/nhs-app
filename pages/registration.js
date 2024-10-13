@@ -48,7 +48,7 @@ export default function PatientRegistration() {
 
   return (
     <div className="flex items-center justify-center px-5 h-full">
-      <div className="w-full mt-4 p-4 text-left bg-white shadow-lg rounded-lg">
+      <div className="w-full mt-4 p-4 text-left bg-white border-2 shadow-lg rounded-lg">
         <h3 className="text-2xl font-bold text-center">Patient Registration</h3>
         <form onSubmit={handleSubmit}>
           <div className="mt-4">

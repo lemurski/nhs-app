@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "./supabaseClient";
 import { Button } from "./ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
-export default function YesNo({ title, description, threshold, onChange }) {
+export default function YesNo({
+  title,
+  description,
+  Yes_output,
+  No_output,
+  onChange,
+  value
+}) {
   const [selectedValue, setSelectedValue] = useState(null);
 
-  const handleToggleChange = (value) => {
-    setSelectedValue(value);
-    onChange(value === "yes");
+  useEffect(() => {
+    // Update the selectedValue when the value prop changes
+    if (value !== undefined) {
+      setSelectedValue(value ? "yes" : "no");
+    }
+  }, [value]);
+
+  const handleToggleChange = (newValue) => {
+    setSelectedValue(newValue);
+    onChange(newValue === "yes");
   };
 
   return (
     <div className="w-full flex flex-col space-y-2">
       <p className="text-black text-xl font-medium">
-        {title ? title : "Have you vomitted in the past 24 hours?"}
+        {title ? title : "Have you vomited in the past 24 hours?"}
       </p>
       <p className="text-black font-medium">
         {description ? description : "Description goes here"}
@@ -31,18 +45,27 @@ export default function YesNo({ title, description, threshold, onChange }) {
           <ToggleGroupItem
             value="yes"
             className="w-full py-7 text-lg"
-            aria-label="Toggle bold"
+            aria-label="Toggle yes"
           >
             <p>Yes</p>
           </ToggleGroupItem>
           <ToggleGroupItem
             value="no"
             className="w-full py-7 text-lg"
-            aria-label="Toggle italic"
+            aria-label="Toggle no"
           >
             <p>No</p>
           </ToggleGroupItem>
         </ToggleGroup>
+      </div>
+      <div className="w-full p-5 bg-gray-50">
+        <p>
+          {selectedValue === "yes"
+            ? Yes_output
+            : selectedValue === "no"
+            ? No_output
+            : null}
+        </p>
       </div>
     </div>
   );

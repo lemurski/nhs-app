@@ -33,11 +33,11 @@ export default function FollowUp(params) {
   }
 
   return (
-    <div className="w-full flex flex-col space-y-8 h-screen bg-white p-5">
+    <div className="w-full flex flex-col space-y-8  h-full bg-white p-3">
       <h1 className="text-black font-bold text-3xl">
         Day {differenceInDays} of Bowel Surgery Recovery
       </h1>
-      <Tabs defaultValue="advice" className="w-full">
+      <Tabs defaultValue="advice" className="w-full h-full mb-20">
         <TabsList className="w-full">
           <TabsTrigger className="w-full" value="advice">
             Advice
@@ -53,10 +53,10 @@ export default function FollowUp(params) {
           <Advice day={differenceInDays} advices={data.advices} />
         </TabsContent>
         <TabsContent value="tasks">
-          <Tasks day={differenceInDays} tasks={data.tasks} />
+          <Tasks patientId={data.Patient_id} day={differenceInDays} tasks={data.tasks} />
         </TabsContent>
         <TabsContent value="questions">
-          <Questions day={differenceInDays} questions={data.questions} />
+          <Questions day={differenceInDays} patientId={data.Patient_id} questions={data.questions} />
         </TabsContent>
       </Tabs>
     </div>
