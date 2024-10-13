@@ -26,7 +26,7 @@ export default function YesNo({
   };
 
   return (
-    <div className="w-full flex flex-col space-y-2">
+    <div className="w-full flex flex-col border rounded-xl p-5 shadow-md   space-y-2">
       <p className="text-black text-xl font-medium">
         {title ? title : "Have you vomited in the past 24 hours?"}
       </p>

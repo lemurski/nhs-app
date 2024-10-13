@@ -38,7 +38,7 @@ export default function PatientRegistration() {
           .insert([{ Process_id: 7476, Patient_id: data[0].Patient_id }]);
 
         localStorage.setItem("patientId", data[0].Patient_id);
-        router.push("/");
+        router.push("/follow-up");
       }
     } catch (error) {
       setError("An error occurred while registering. Please try again.");
