@@ -9,20 +9,23 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import YesNo from "@/components/yes-no";
 
 export default function FollowUp(params) {
-
   const { data, isPending } = useUser();
 
   if (isPending) {
-    return null
+    return null;
   }
 
-  console.log(data);
+  const startDateISO = data.Patient_Process[0].Start_date;
+  const today = new Date();
+
+  const startDate = new Date(startDateISO);
+  const timeDifference = today - startDate;
+  const differenceInDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
   if (!data.Patient_Process.length) {
     return (
       <div className="w-full h-screen flex bg-white justify-center p-5">
-        <h1 className="text-black font-bold text-3xl text-center"
-        >
+        <h1 className="text-black font-bold text-3xl text-center">
           No active follow up plans
         </h1>
       </div>
@@ -32,7 +35,7 @@ export default function FollowUp(params) {
   return (
     <div className="w-full flex flex-col space-y-8 h-screen bg-white p-5">
       <h1 className="text-black font-bold text-3xl">
-        Day 1 of Bowel Surgery Recovery
+        Day {differenceInDays} of Bowel Surgery Recovery
       </h1>
       <Tabs defaultValue="advice" className="w-full">
         <TabsList className="w-full">
@@ -47,13 +50,13 @@ export default function FollowUp(params) {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="advice">
-          <Advice advices={data.advices} />
+          <Advice day={differenceInDays} advices={data.advices} />
         </TabsContent>
         <TabsContent value="tasks">
-          <Tasks tasks={data.tasks} />
+          <Tasks day={differenceInDays} tasks={data.tasks} />
         </TabsContent>
         <TabsContent value="questions">
-          <Questions />
+          <Questions day={differenceInDays} questions={data.questions} />
         </TabsContent>
       </Tabs>
     </div>

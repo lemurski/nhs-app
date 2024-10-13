@@ -19,7 +19,7 @@ const PatientProcessDetails = () => {
   ].sort((a, b) => a.day - b.day);
 
   return (
-    <div className="p-4">
+    <div className="w-full max-w-4xl py-8 mx-auto">
       <h1 className="text-2xl font-bold mb-4">Patient Process Details</h1>
       <Card className="mb-4">
         <CardHeader>
@@ -33,7 +33,7 @@ const PatientProcessDetails = () => {
 
       <h2 className="text-xl font-semibold mb-2">Process Timeline</h2>
       {allEvents.map((event, index) => (
-        <Card key={event.id} className="mb-2">
+        <Card key={event.id} className="mb-8">
           <CardHeader>
             <CardTitle className="text-lg">
               Day {event.day}: {event.event.Title} ({event.type})
