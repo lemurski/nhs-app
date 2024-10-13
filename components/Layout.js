@@ -66,11 +66,10 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {router.pathname.includes("/dashboard") ||
-      router.pathname === "/registration" ? (
+      {router.pathname.includes("/dashboard") ? (
         <Navbar />
       ) : null}
-      <div className="w-full z-50 h-screen py-16 max-h-screen bg-white">
+      <div className="w-full z-50 py-16 h-screen bg-gray-100">
         {children}
       </div>
       {router.pathname.includes("/dashboard") ||
