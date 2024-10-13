@@ -1,12 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../supabaseClient";
+import { useRouter } from "next/router";
 
 export default function useUser() {
+  const router = useRouter()
 
   let patientId = null
 
   if (typeof window !== 'undefined') {
     patientId = localStorage.getItem('patientId')
+    console.log('here')
+    if (!patientId) {
+      router.push('/registration')
+    }
 } else {
     console.log('we are running on the server');
 }
